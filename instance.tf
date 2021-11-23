@@ -1,6 +1,6 @@
 provider "aws" {
-  access_key =  ""
-  secret_key =  ""
+  access_key =  var.access
+  secret_key =  var.secret
   region     = "us-east-1"
 }
 
@@ -40,6 +40,9 @@ resource "aws_instance" "terraform-example" {
   security_groups  = ["${aws_security_group.hello-terra-ssh-http.name}"]
   instance_type    = "t2.micro"
   key_name         = "terraform"
+  tags = {
+    Name = "MyInstance"
+  }
   user_data        = <<-EOF
   #! /bin/bash
   sudo yum install httpd -y

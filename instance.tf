@@ -41,7 +41,7 @@ resource "aws_instance" "terraform-example" {
   instance_type    = "t2.micro"
   key_name         = "terraform"
   tags = {
-    Name = "MyInstance"
+    Name = var.mytag
   }
   user_data        = <<-EOF
   #! /bin/bash
